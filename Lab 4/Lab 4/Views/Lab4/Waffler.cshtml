@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Waffler";
+    int id = 0;
+    try
+    {
+        id = Int32.Parse(Url.Action().Split("/").Last());
+    }
+    catch { System.Diagnostics.Debug.WriteLine("Error"); }
+
+}
+
+<div class="jumbotron p-2 bg-primary text-white">
+    <h3>Generate Waffles</h3>
+</div>
+<body class="p-4">
+    <div class="inline-block" id="waffle_gen">
+        <a class="btn btn-success" href="~/Lab4/Waffler/1">1</a>
+        <a class="btn btn-success" href="~/Lab4/Waffler/2">2</a>
+        <a class="btn btn-success" href="~/Lab4/Waffler/3">3</a>
+        <a class="btn btn-success" href="~/Lab4/Waffler/4">4</a>
+        <a class="btn btn-success" href="~/Lab4/Waffler/5">5</a>
+    </div>
+
+    @for (int i = 0; i < id; i++)
+    {
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @Html.Raw(System.Web.HttpUtility.HtmlDecode(WaffleGenerator.WaffleEngine.Html(1, true, false)))
+            </div>
+        </div>
+    }
+</body>

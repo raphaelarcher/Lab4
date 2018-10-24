@@ -1,0 +1,16 @@
+﻿@model System.DateTime
+@{
+    ViewData["Title"] = "Index";
+    DateTime now = DateTime.Now;
+    DateTime endOfTheYear = new DateTime(now.Year, 12, 31);
+    double remainingDays = Math.Ceiling((endOfTheYear - now).TotalDays);
+}
+
+<div class="jumbotron p-2 bg-primary text-white">
+    <h3>@ViewData["TimeOfDay"]</h3>
+</div>
+<div>
+    <h2>It is @Model.ToShortTimeString() on @Model.ToLongDateString()</h2>
+    <div>There are @remainingDays more days in @now.Year</div>
+    <a class="btn btn-primary" role="button" href="~/Lab4/Waffler">Generate Waffles</a>
+</div>
